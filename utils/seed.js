@@ -1,5 +1,5 @@
 const connection = require('../config/connection');
-const { Thought, User } = require('../models');
+const { Reaction, Thought, User } = require('../models');
 
 connection.once('open', async () => {
     console.log('Connected to the database.');
