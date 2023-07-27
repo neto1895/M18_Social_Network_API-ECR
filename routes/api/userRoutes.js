@@ -51,7 +51,7 @@ router.route('/:userId')
     .delete(removeUserById)
 
 // /api/
-router.route('/api/users/userId/friends/friendId')
+router.route('/api/users/:userId/friends/:friendId')
     .post(addNewFriend)
     .delete(removeFriend)
 
