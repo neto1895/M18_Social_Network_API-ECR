@@ -1,5 +1,3 @@
-const { User } = require('../../models');
-
 const router = require('express').Router();
 
 const {
@@ -12,45 +10,18 @@ const {
     removeFriend,
 } = require('../../Controllers/userController')
 
-
-
-// router.get('/', async (req, res) => {
-//     res.send('Komma kommosa =^.^=')
-// })
-
-
-
-// router.get('/test', async (rec, res) => {
-    
-//     try {
-//         const allUsers = await User.find({})
-//         res.json(allUsers);
-//     } catch (err) {
-//         res.status(500).json(err);
-//     }
-// });
-
-// router.post('/testPost', async (req, res) => {
-//     try {
-//         const user = await User.create(req.body);
-//         res.json(user);
-//       } catch (err) {
-//         res.status(500).json(err);
-//       }
-// })
-
-// /api/user
+// /api/users
 router.route('/')
     .get(getAllUsers)
     .post(createNewUser)
 
-// /api/user/
+// /api/users
 router.route('/:userId')
     .get(getUserById)
     .put(updateUserById)
     .delete(removeUserById)
 
-// /api/
+// /api/users
 router.route('/:userId/friends/:friendId')
     .post(addNewFriend)
     .delete(removeFriend)
