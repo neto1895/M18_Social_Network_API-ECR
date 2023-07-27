@@ -45,7 +45,7 @@ router.route('/')
     .post(createNewUser)
 
 // /api/user/
-router.route('/userId')
+router.route('/:userId')
     .get(getUserById)
     .put(updateUserById)
     .delete(removeUserById)

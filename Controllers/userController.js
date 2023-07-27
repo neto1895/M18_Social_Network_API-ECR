@@ -25,7 +25,21 @@ module.exports = {
 
     async getUserById(req, res) {
         try {
-            res.send("1")
+            const user = await User.findOne({ _id: req.params.userId })
+
+            .select('-__v')
+            .populate({
+                path: 'thoughts',
+                select: '-__v'
+            })
+            .populate({
+                path: 'friends',
+                select: '-__v'
+            });
+            if (!user) {
+                return res.status(404).json({ message: 'No user with that ID'})
+            }
+            res.json(user);
         } catch (err) {
             res.status(500).json(err);
         }
@@ -33,7 +47,14 @@ module.exports = {
 
     async updateUserById(req, res) {
         try {
-            res.send("2")
+            const user = await User.findByIdAndUpdate(
+                { _id: req.params.userId},
+                { $set: req.body },
+            );
+            if (!user) {
+                return res.status(404).json({ message: 'No user with that ID'})
+            }
+            res.json(user);
         } catch (err) {
             res.status(500).json(err);
         }
@@ -41,7 +62,13 @@ module.exports = {
 
     async removeUserById(req, res) {
         try {
-            res.send("3")
+            const user = await User.findByIdAndDelete(
+                { _id: req.params.userId}
+            );
+            if (!user) {
+                return res.status(404).json({ message: 'No user with that ID'})
+            }
+            res.json(user);
         } catch (err) {
             res.status(500).json(err);
         }
