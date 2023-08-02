@@ -1,9 +1,3 @@
-# M18_Social_Network_API-ECR
-API for a social network web application where users can share their thoughts, react to friends’ thoughts, and create a friend list. Using Express.js for routing, a MongoDB database, and the Mongoose ODM. 
-
-
-
-
 ![Web Developer](https://img.shields.io/badge/bootcamp-Web%20Developer-red)
 # M18C Social Network API - ECR
 
