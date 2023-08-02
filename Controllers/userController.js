@@ -5,6 +5,9 @@ module.exports = {
     async getAllUsers(req, res) {
         try {
             const allUsers = await User.find({})
+            .select('-__v')
+            .populate({ path: 'thoughts', select: '-__v' })
+            .populate({ path: 'friends',  select: '-__v' });
             res.json(allUsers);
 
         } catch (err) {

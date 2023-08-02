@@ -1,5 +1,4 @@
 const { User , Thought } = require('../models');
-const { updateUserById } = require('./userController');
 
 module.exports = {
     // GET
@@ -103,7 +102,7 @@ module.exports = {
         try {
             const reaction = await Thought.findOneAndUpdate(
                 { _id: req.params.thoughtId }, 
-                { $pull: { reactions: {reactionId: req.params.reactionId}}}, // Only difference with addNewFriend is the $pull
+                { $pull: { reactions: {reactionId: req.params.reactionId}}}, // Only difference with createReaction is the $pull
                 { new: true}
             );
 
