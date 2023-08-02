@@ -22,9 +22,15 @@ const reactionSchema = new Schema(
                 return new Date(timestamp).toISOString();
             },
         },
+    },
+    {
+        toJSON: {
+            getters: true,
+            virtuals: true
+        },
+        id: false
     }
 );
 
-// const Reaction = model ('reaction', reactionSchema);
 
 module.exports = reactionSchema;
